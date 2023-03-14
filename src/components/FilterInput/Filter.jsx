@@ -1,7 +1,9 @@
-export const Filter = ({onChange}) => {
-    return <label>
+import PropTypes from 'prop-types';
+
+export const Filter = ({ onChange }) => {
+    return <label className="Form__label">
         Find a contact by name
-        <input
+        <input className="Form__input"
             type="text"
             name="filter"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -9,4 +11,8 @@ export const Filter = ({onChange}) => {
             onChange={onChange}>
         </input>
     </label>
+}
+
+Filter.propTypes = {
+    onChange: PropTypes.func.isRequired,
 }

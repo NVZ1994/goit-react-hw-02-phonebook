@@ -1,11 +1,13 @@
+import PropTypes from 'prop-types';
+
 export const ContactList = ({ contacts, onDelete }) => {
     return (
-        <ul>
+        <ul className="Contact__list">
             {contacts.map(contact => (
-                <li key={contact.id}>
-                    <p>{contact.name}:</p>
-                    <p>{contact.phone}</p>
-                    <button onClick={() => onDelete(contact.id)}>Delete contact</button>
+                <li key={contact.id} className='Contact__item'>
+                    <p className="Contact__item--text">{contact.name}:</p>
+                    <p className="Contact__item--text">{contact.phone}</p>
+                    <button className="Delete__btn" onClick={() => onDelete(contact.id)}>Delete contact</button>
                 </li>
             )
             )}
@@ -13,3 +15,7 @@ export const ContactList = ({ contacts, onDelete }) => {
     )
 }
 
+ContactList.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+    onDelete: PropTypes.func.isRequired,
+}

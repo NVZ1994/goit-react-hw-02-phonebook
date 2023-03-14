@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 
@@ -8,6 +8,10 @@ const INITIAL_STATE = {
 }
 
 export default class Form extends Component {
+    static = {
+        onSubmit: PropTypes.func.isRequired,
+    }
+
     state = { ...INITIAL_STATE }
     
     handleInputChange = (event) => {
@@ -35,9 +39,9 @@ export default class Form extends Component {
     render() {
         return (
         <form onSubmit={this.handleSubmit}> 
-          <label>
+          <label className='Form__label'>
             Name
-            <input
+            <input className='Form__input'
                   type="text"
                   name='name'
                   value={this.state.name}
@@ -47,9 +51,9 @@ export default class Form extends Component {
                   required
             />
           </label>
-          <label>
+          <label className='Form__label'>
             Phone number
-            <input
+            <input className='Form__input'
                   type="tel"
                   name='phone'
                   value={this.state.phone}
@@ -59,9 +63,10 @@ export default class Form extends Component {
                   required
             />
           </label>
-          <button type="submit">Add contact</button>
+          <button type="submit" className='Form__btn'>Add contact</button>
         </form>
     )
 }
 
 }
+

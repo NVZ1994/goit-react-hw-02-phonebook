@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { ContactList } from "./ContactList/ContactList"
 import { Filter } from "./FilterInput/Filter"
 import Form from "./Form/Form"
+import './App.css'
 
 
 export class App extends Component {
@@ -24,6 +25,7 @@ export class App extends Component {
   }
 
   handleDeleteContact = (id) => {
+    console.log('hi')
     this.setState((prevState) => ({contacts: prevState.contacts.filter(contact => contact.id !== id)}))
   }
 
@@ -41,7 +43,7 @@ export class App extends Component {
   render() {
     const {filter, contacts} = this.state
     return (
-      <div style={{ height: '100vh', display: 'block', textAlign: 'center', fontSize: 40, color: '#010101' }}>
+      <div className='Container'>
         <h1>Phonebook</h1>
         <Form onSubmit={this.handleContactSubmit} />
         <h2>Contacts</h2>
